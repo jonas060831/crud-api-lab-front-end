@@ -18,8 +18,8 @@ https://github.com/jonas060831/men-stack-lab/blob/master/public/css/global.css
   --light-link-font-color: rgb(0, 121, 251);
   --dark-link-font-color: #ff8800;
 
-  --light-footer-background-color: rgb(255, 255, 255);
-  --dark-footer-bakcground-color: #2d2d2d;
+  --light-ui-background-color: rgb(255, 255, 255);
+  --dark-ui-bakcground-color: #2d2d2d;
 }
 
 body {
@@ -34,7 +34,7 @@ body {
       --font-color: var(--dark-font-color);
       --link-color: var(--dark-link-font-color);
       --accent-color: var(--dark-link-font-color);
-      --footer-background-color: var(--dark-footer-bakcground-color);
+      --ui-background-color: var(--dark-ui-bakcground-color);
   }
 }
 
@@ -44,7 +44,7 @@ body {
       --font-color: var(--light-font-color);
       --link-color: var(--light-link-font-color);
       --accent-color: var(--light-link-font-color);
-      --footer-background-color: var(--light-footer-background-color);
+      --ui-background-color: var(--light-ui-bakcground-color);
   }
 }
 

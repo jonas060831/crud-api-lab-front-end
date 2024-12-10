@@ -1,0 +1,24 @@
+.navbar  {
+    width: '100vw';
+    background-color: var(--ui-background-color);
+    height: 5rem;
+    padding: 1rem 1rem;
+}
+
+.navbar ul {
+    display: flex;
+    gap: 1rem;
+}
+
+.navbar ul li {
+    list-style-type: none;
+    cursor: pointer;
+    padding: 1rem;
+    background-color: var(--bg);
+    border-radius: 10px;
+    width: 100px
+}
+
+.navbar ul li:hover {
+    color: var(--accent-color)
+}
