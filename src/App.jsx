@@ -33,8 +33,6 @@ const App = () => {
       content: <HomePage
           movies={movies}
           handleFetchMovies={handleFetchMovies}
-          handleViewChange={handleViewChange}
-          handleSelectedMovie={handleSelectedMovie}
         />,
       id: 0
     },
@@ -59,17 +57,15 @@ const App = () => {
     setMovies(movies)
   }
 
-  function handleViewChange(event) {
+  function handleViewChange (event) {
     const viewId = event.target.id
     setView(views[viewId])
 
   }
 
   function handleSelectedMovie(selectedMovie){
-
-    const newValue = {...selectedMovie}
-
-    setMovie(newValue)
+    console.log('movie in App.js', selectedMovie)
+    setMovie(selectedMovie)
   }
 
   return (
