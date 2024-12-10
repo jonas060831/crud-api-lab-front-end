@@ -25,6 +25,7 @@ https://github.com/jonas060831/men-stack-lab/blob/master/public/css/global.css
 body {
   background-color: var(--bg);
   color: var(--font-color);
+  font-family: Arial;
 }
 
 
@@ -44,7 +45,7 @@ body {
       --font-color: var(--light-font-color);
       --link-color: var(--light-link-font-color);
       --accent-color: var(--light-link-font-color);
-      --ui-background-color: var(--light-ui-bakcground-color);
+      --ui-background-color: var(--light-ui-background-color);
   }
 }
 

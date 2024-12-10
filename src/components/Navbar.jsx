@@ -16,6 +16,7 @@ const Navbar = ({ views, handleViewChange }) => {
                onClick={event => handleViewChange(event) }
                key={view.id}
                id={view.id}
+               style={{ width: '150px' }}
               >
                 {view.title}
               </li>

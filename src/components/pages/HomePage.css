@@ -3,16 +3,16 @@
     display: flex;
     gap: 1rem;
     flex-direction: column;
-    
-
+    border-radius: 10px;
+    background-color: var(--ui-background-color);
 }
 
 .movie-card {
-    background-color: var(--ui-background-color);
+    
     list-style-type: none;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 4rem;
-    border-radius: 10px;
+    
 }
