@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import './App.css'
 import Navbar from './components/Navbar'
 import ContentView from './components/ContentView'
+import HomePage from './components/pages/HomePage'
 
 
 {/*
@@ -16,20 +17,22 @@ D IN THE FORM UPDATE THERE IS A BUTTON TO SEND A DELETE REQUEST
 
 */}
 
-//i need to fetch the movies
+
+
+
 const App = () => {
 
   const [movies, setMovies] = useState([])
-  
+
   const views = [
-    { title: "Home", content: "Home Page Component", id: 0 },
+    { title: "Home", content: <HomePage movies={movies} handleFetchMovies={handleFetchMovies}/>, id: 0 },
     { title: "Add", content: "Add new Component", id: 1 }
   ];
-
   const [view, setView] = useState(views[0])
 
+ 
 
-  const handleGetMovies = (movies) => {
+  function handleFetchMovies(movies) {
     setMovies(movies)
   }
 
@@ -38,12 +41,10 @@ const App = () => {
 
     setView(views[viewId])
   }
-
   return (
     <div>
       <Navbar
        handleViewChange={handleViewChange}
-       getMovies={handleGetMovies}
        views={views}
       />
 
