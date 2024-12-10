@@ -11,15 +11,20 @@ const Navbar = ({ views, handleViewChange }) => {
 
         <ul>
           {
-            views.map(view => (
-              <li
-               onClick={event => handleViewChange(event) }
-               key={view.id}
-               id={view.id}
-               style={{ width: '150px' }}
-              >
-                {view.title}
-              </li>
+            views.map((view, index) => (
+
+              index !== 2 ?
+              (<li
+                onClick={event => handleViewChange(event) }
+                key={view.id}
+                id={view.id}
+                style={{ width: '150px' }}
+               >
+                 {view.title}
+               </li>)
+              :
+              (<li key={view.id} style={{display: 'none' }}></li>)
+              
             ))
           }
         </ul>

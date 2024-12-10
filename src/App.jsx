@@ -5,6 +5,7 @@ import Navbar from './components/Navbar'
 import ContentView from './components/ContentView'
 import HomePage from './components/pages/HomePage'
 import AddNewMovie from './components/pages/AddNewMovie'
+import UpdateMoviePage from './components/pages/UpdateMoviePage'
 
 
 {/*
@@ -24,14 +25,16 @@ D IN THE FORM UPDATE THERE IS A BUTTON TO SEND A DELETE REQUEST
 const App = () => {
 
   const [movies, setMovies] = useState([])
-
+  const [movie, setMovie] = useState({})
+  
   const views = [
     { 
       title: "Home",
       content: <HomePage
           movies={movies}
           handleFetchMovies={handleFetchMovies}
-          
+          handleViewChange={handleViewChange}
+          handleSelectedMovie={handleSelectedMovie}
         />,
       id: 0
     },
@@ -41,10 +44,16 @@ const App = () => {
           handleViewChange={handleViewChange}
         />,
       id: 1
+    },
+    {
+      title: "Update Movie",
+      content: <UpdateMoviePage 
+          movie={movie}
+       />,
+      id: 2
     }
   ];
   const [view, setView] = useState(views[0])
-
 
   function handleFetchMovies(movies) {
     setMovies(movies)
@@ -52,9 +61,17 @@ const App = () => {
 
   function handleViewChange(event) {
     const viewId = event.target.id
-
     setView(views[viewId])
+
   }
+
+  function handleSelectedMovie(selectedMovie){
+
+    const newValue = {...selectedMovie}
+
+    setMovie(newValue)
+  }
+
   return (
     <div>
       <Navbar

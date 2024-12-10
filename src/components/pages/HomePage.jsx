@@ -6,7 +6,7 @@ import './HomePage.css'
 //reading the documentation on https://vite.dev/guide/env-and-mode format VITE_<ENV_KEY_NAME>
 const BASE_URL = import.meta.env.VITE_SERVER_BASE_URL
 
-const HomePage = ({ handleFetchMovies, handleViewChange  }) => {
+const HomePage = ({ handleFetchMovies, handleViewChange, handleSelectedMovie  }) => {
 
   const [movies, setMovies ] = useState([])
   const fetchAllMovies = async() => {
@@ -25,12 +25,17 @@ const HomePage = ({ handleFetchMovies, handleViewChange  }) => {
 
   },[])
 
-  useEffect(() => {
 
-  }, [])
+  const handleTwoFunctions = (event, movie) => {
+
+    event.target.id = 2
+    handleViewChange(event)
+
+    handleSelectedMovie(movie)
+  }
+
   return (
     <div>
-
       <h2>Welcome to Our new Movie Tracker App</h2>
       <br /><br />
         {
@@ -45,7 +50,8 @@ const HomePage = ({ handleFetchMovies, handleViewChange  }) => {
                     <li
                      className="movie-card"
                      key={indx}
-                    >
+                     id={movie.id}
+                     onClick={(event) => handleTwoFunctions(event, movie) } >
                       <h3>{movie.title}</h3> <br />
                     </li>
                   ))
