@@ -48,7 +48,7 @@ const AddNewMovie = ({  handleViewChange }) => {
             alert(`${jsonData.title} is now added to Movie Tracker App`)
             
             
-            //go back to the main page
+            //go back to the home page
             //hack hehehe
             event.target.id = 0
             handleViewChange(event)
