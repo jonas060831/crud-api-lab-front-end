@@ -40,6 +40,9 @@ const HomePage = ({ handleFetchMovies }) => {
     setMovie(movie)
     
   }
+
+  const handleSetMovie = () => setMovie([])
+
   if(movie.length === 0) {
     return (
       <div>
@@ -70,7 +73,7 @@ const HomePage = ({ handleFetchMovies }) => {
     )
   } else {
 
-    return <UpdateMoviePage movie={movie} />
+    return <UpdateMoviePage movie={movie} handleSetMovie={handleSetMovie}/>
   }
   
 }

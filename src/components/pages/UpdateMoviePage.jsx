@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 const BASE_URL = import.meta.env.VITE_SERVER_BASE_URL
 
 
-const UpdateMoviePage = ({ movie }) => {
+const UpdateMoviePage = ({ movie, handleSetMovie }) => {
 
 
   const [updatedMovie, setUpdatedMovie] = useState(movie)
@@ -25,7 +25,8 @@ const UpdateMoviePage = ({ movie }) => {
 
     //console.log(movie._id)
 
-    const response = await fetch(`${BASE_URL}/movies/${movie._id}`,{
+    try {
+      const response = await fetch(`${BASE_URL}/movies/${movie._id}`,{
         method: "PUT",
         body: JSON.stringify(updatedMovie),
         // Adding headers to the request
@@ -39,11 +40,14 @@ const UpdateMoviePage = ({ movie }) => {
 
       alert(`${jsonData.title} has been updated!`)
     }
+    } catch (error) {
+      alert(`Error: ${error.message}`)
+    }
   }
 
   return (
     <div>
-        <h3>Update {movie.title}</h3>
+        <h3><span onClick={() => handleSetMovie() }> <i class="fa-solid fa-chevron-left"></i> </span>&nbsp;&nbsp;&nbsp;  Update {movie.title}</h3>
 
         <br /><br />
         <form onSubmit={handleSubmit} style={{ display: 'flex', gap:'2rem', flexDirection: 'column' }}>
@@ -90,7 +94,7 @@ const UpdateMoviePage = ({ movie }) => {
             <button type='submit'>Update</button>
         </form>
         <br /><br />
-        <button>Delete</button>
+        <button style={{ backgroundColor: 'red', width: '100%', height: '3rem', color: 'white' }} >Delete</button>
 
     </div>
   )
