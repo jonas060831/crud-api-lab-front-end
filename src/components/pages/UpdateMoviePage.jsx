@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 const BASE_URL = import.meta.env.VITE_SERVER_BASE_URL
 
 
-const UpdateMoviePage = ({ movie, handleSetMovie }) => {
+const UpdateMoviePage = ({ movie, handleSetMovie, handleFetchMovies }) => {
 
 
   const [updatedMovie, setUpdatedMovie] = useState(movie)
@@ -37,7 +37,7 @@ const UpdateMoviePage = ({ movie, handleSetMovie }) => {
 
     if(response.ok) {
       const jsonData = await response.json()
-
+      handleFetchMovies()
       alert(`${jsonData.title} has been updated!`)
     }
     } catch (error) {
@@ -45,9 +45,36 @@ const UpdateMoviePage = ({ movie, handleSetMovie }) => {
     }
   }
 
+  const handleDeleteMovie = async(event) => {
+    console.log(event)
+    event.preventDefault()
+    try {
+      const response = await fetch(`${BASE_URL}/movies/${movie._id}`, {
+        method: 'DELETE',
+        // Adding headers to the request
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      })
+
+      if(response.ok) {
+        const jsonData = await response.json()
+        handleFetchMovies()
+        alert(`${jsonData.title} has been deleted`)
+        
+
+        //this will trigger return on the list of movies
+        handleSetMovie([])
+      }
+
+    } catch (error) {
+      alert(`Error: ${error.message}`)
+    }
+  }
+
   return (
     <div>
-        <h3><span onClick={() => handleSetMovie() }> <i class="fa-solid fa-chevron-left"></i> </span>&nbsp;&nbsp;&nbsp;  Update {movie.title}</h3>
+        <h3><span onClick={() => handleSetMovie() } style={{cursor: 'pointer'}} > <i className="fa-solid fa-chevron-left"></i> </span>&nbsp;&nbsp;&nbsp;  Update {updatedMovie.title}</h3>
 
         <br /><br />
         <form onSubmit={handleSubmit} style={{ display: 'flex', gap:'2rem', flexDirection: 'column' }}>
@@ -94,7 +121,10 @@ const UpdateMoviePage = ({ movie, handleSetMovie }) => {
             <button type='submit'>Update</button>
         </form>
         <br /><br />
-        <button style={{ backgroundColor: 'red', width: '100%', height: '3rem', color: 'white' }} >Delete</button>
+        
+        <form onSubmit={handleDeleteMovie}>
+          <button style={{ backgroundColor: 'red', width: '100%', height: '3rem', color: 'white' }} >Delete</button>
+        </form>
 
     </div>
   )

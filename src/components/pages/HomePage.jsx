@@ -63,9 +63,11 @@ const HomePage = ({ handleFetchMovies }) => {
                        id={movie.id}
                        onClick={(event) => handleTwoFunctions(event, movie) } >
                         <h3>{movie.title}</h3> <br />
+                       
                       </li>
                     ))
                   }
+                   <hr />
                 </ul>
             )
           }
@@ -73,7 +75,7 @@ const HomePage = ({ handleFetchMovies }) => {
     )
   } else {
 
-    return <UpdateMoviePage movie={movie} handleSetMovie={handleSetMovie}/>
+    return <UpdateMoviePage movie={movie} handleSetMovie={handleSetMovie} handleFetchMovies={fetchAllMovies}/>
   }
   
 }

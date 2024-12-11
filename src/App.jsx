@@ -25,11 +25,11 @@ D IN THE FORM UPDATE THERE IS A BUTTON TO SEND A DELETE REQUEST
 const App = () => {
 
   const [movies, setMovies] = useState([])
-  const [movie, setMovie] = useState({})
+  //const [movie, setMovie] = useState({})
   
   const views = [
     { 
-      title: "Home",
+      title: <><i className="fa-sharp-duotone fa-solid fa-house"></i> Home</>,
       content: <HomePage
           movies={movies}
           handleFetchMovies={handleFetchMovies}
@@ -37,7 +37,7 @@ const App = () => {
       id: 0
     },
     { 
-      title: "Add Movie",
+      title: <><i className="fa-solid fa-plus"></i> Add Movie</>,
       content: <AddNewMovie
           handleViewChange={handleViewChange}
         />,
@@ -45,9 +45,7 @@ const App = () => {
     },
     {
       title: "Update Movie",
-      content: <UpdateMoviePage 
-          movie={movie}
-       />,
+      content: <UpdateMoviePage />,
       id: 2
     }
   ];
@@ -62,14 +60,8 @@ const App = () => {
     setView(views[viewId])
 
   }
-
-  function handleSelectedMovie(selectedMovie){
-    console.log('movie in App.js', selectedMovie)
-    setMovie(selectedMovie)
-  }
-
   return (
-    <div>
+    <div >
       <Navbar
        handleViewChange={handleViewChange}
        views={views}
